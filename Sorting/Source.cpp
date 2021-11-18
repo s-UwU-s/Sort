@@ -5,13 +5,16 @@ using namespace std;
 void printArr(int* arr, int size);
 int* initArr(int size);
 void BublleSort(int* arr, int size);
+void sellectionSort(int* arr, int size);
 
 int main() {
 	int size = 10;
 	srand(time(NULL));
 	int* arr = initArr(size);
 	printArr(arr, size);
-	BublleSort(arr, size);
+	//BublleSort(arr, size);
+	//printArr(arr, size);
+	sellectionSort(arr, size);
 	printArr(arr, size);
 }
 
@@ -40,5 +43,21 @@ void BublleSort(int* arr, int size)
 				swap(arr[j], arr[j + 1]);
 			}
 		}
+	}
+}
+
+void sellectionSort(int* arr, int size)
+{
+	for (int i = 0; i < size - 1; i++) {
+		int tmp = arr[i];
+		int index = i;
+		for (int j = i; j < size; j++) {
+			if (tmp > arr[j]) {
+				tmp = arr[j];
+				index = j;
+			}
+		}
+		swap(arr[i], arr[index]);
+		printArr(arr, size);
 	}
 }
